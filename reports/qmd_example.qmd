@@ -9,6 +9,7 @@ editor: source
 ---
 
 ```{python}
+#| echo: false
 import pandas as pd
 from IPython.display import Markdown, display
 from tabulate import tabulate
@@ -50,24 +51,24 @@ Suppose we were interested in looking in more closely at the province
 with the highest spread (in terms of standard deviation) of horse populations. 
 We present the standard deviations in @tbl-horse-sd.
 
-Table 1. Standard deviation of historical (1906-1972) horse populations for each Canadian province.
-
 ```{python}
+#| echo: false
 #| label: tbl-horse-sd
 #| tbl-cap: Standard deviation of historical (1906-1972) horse populations for each Canadian province.
 
 horses_sd_table = pd.read_csv("../results/horses_spread.csv")
 largest_sd = horses_sd_table['Province'].values[0]
 Markdown(horses_sd_table.to_markdown(index=False))
+```
 
 Note that we define standard deviation (of a sample) as
 
 $$s = \sqrt{\frac{\sum_{i=1}^N (x_i - \overline{x})^2}{N-1} }$$
 
-Additionally, note that in Table 1 we consider the sample standard deviation of the number of horses during the same time span as @fig-horse-pops.
+Additionally, note that in @tbl-horse-sd we consider the sample standard deviation of the number of horses during the same time span as @fig-horse-pops.
 
 ![Horse populations for the province with the largest standard deviation.](../results/horse_pops_plot_largest_sd.png){#fig-largest-sd fig-width="65%"}
 
-In @fig-largest-sd we zoom in and look at the province of ???, which had the largest spread of values in terms of standard deviation.
+In @fig-largest-sd we zoom in and look at the province of `{python} largest_sd`, which had the largest spread of values in terms of standard deviation.
 
 # References
